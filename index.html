@@ -112,6 +112,15 @@
       $('.clear-completed').click(function() {
         $('.completed').remove()
       })
+
+      // 5.全选
+      $('.toggle-all').click(function() {
+        if ($(this).prop('checked')) {
+          $('.todo-list').find('.toggle').prop('checked', true).parents('li').addClass('completed')
+        } else {
+          $('.todo-list').find('.toggle').prop('checked', false).parents('li').removeClass('completed')
+        }
+      })
     })
   </script>
 </body>
