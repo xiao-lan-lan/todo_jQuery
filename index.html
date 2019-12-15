@@ -95,7 +95,7 @@
       })
 
       // 2.点击复选框,选中加类名completed,未选中移除类名
-      $('.toggle').click(function() {
+      $('.todo-list').on('click', '.toggle', function() {
         if ($(this).prop('checked')) {
           $(this).parents('li').addClass('completed')
         } else {
@@ -104,8 +104,13 @@
       })
 
       // 3.点击删除按钮,移除当前父元素li
-      $('.destroy').click(function() {
+      $('.todo-list').on('click', '.destroy', function() {
         $(this).parents('li').remove();
+      })
+
+      // 4.删除所有已完成任务
+      $('.clear-completed').click(function() {
+        $('.completed').remove()
       })
     })
   </script>
