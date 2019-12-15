@@ -88,10 +88,19 @@
             <input class="toggle" type="checkbox">
             <label>${val}</label>
             <button class="destroy"></button>
-          </div>
-		  <input class="edit" value="Rule the web">`)
+            </div>
+		        <input class="edit" value="Rule the web">`)
         $('.todo-list').prepend(li)
         $(this).val('');
+      })
+
+      // 2.点击复选框,选中加类名completed,未选中移除类名
+      $('.toggle').click(function() {
+        if ($(this).prop('checked')) {
+          $(this).parents('li').addClass('completed')
+        } else {
+          $(this).parents('li').removeClass('completed')
+        }
       })
     })
   </script>
