@@ -102,6 +102,11 @@
           $(this).parents('li').removeClass('completed')
         }
       })
+
+      // 3.点击删除按钮,移除当前父元素li
+      $('.destroy').click(function() {
+        $(this).parents('li').remove();
+      })
     })
   </script>
 </body>
