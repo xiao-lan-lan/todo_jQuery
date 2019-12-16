@@ -75,6 +75,9 @@
   <script src="js/app.js"></script>
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <script>
+    // 初始未完成数量
+    $('.todo-count').find('strong').text($('.toggle').length - $('.toggle:checked').length)
+
     $(function() {
       // 1.增加任务,输入框的键盘弹起事件,键盘码为13时,拿到输入框的value值,创建li标签,添加到未完成的ul中
       $('.new-todo').keyup(function(e) {
@@ -92,6 +95,9 @@
 		        <input class="edit" value="Rule the web">`)
         $('.todo-list').prepend(li)
         $(this).val('');
+
+        // 7.更新未完成数量
+        $('.todo-count').find('strong').text($('.toggle').length - $('.toggle:checked').length)
       })
 
       // 2.点击复选框,选中加类名completed,未选中移除类名
@@ -101,16 +107,27 @@
         } else {
           $(this).parents('li').removeClass('completed')
         }
+
+        // 7.更新未完成数量
+        console.log($('.todo-count').find('strong').text());
+        var todoNum = $('.toggle').length - $('.toggle:checked').length
+        $('.todo-count').find('strong').text(todoNum)
       })
 
       // 3.点击删除按钮,移除当前父元素li
       $('.todo-list').on('click', '.destroy', function() {
         $(this).parents('li').remove();
+
+        // 7.更新未完成数量
+        $('.todo-count').find('strong').text($('.toggle').length - $('.toggle:checked').length)
       })
 
       // 4.删除所有已完成任务
       $('.clear-completed').click(function() {
         $('.completed').remove()
+
+        // 7.更新未完成数量
+        $('.todo-count').find('strong').text($('.toggle').length - $('.toggle:checked').length)
       })
 
       // 5.全选
@@ -120,18 +137,23 @@
         } else {
           $('.todo-list').find('.toggle').prop('checked', false).parents('li').removeClass('completed')
         }
+
+        // 7.更新未完成数量
+        $('.todo-count').find('strong').text($('.toggle').length - $('.toggle:checked').length)
       })
 
       // 6.反选,子复选框点击事件,如果被选中的长度等于全部li长度,则全选被选中;否则全选不选中
       $('.todo-list').on('click', '.toggle', function() {
-        console.log($('.toggle').length);
-        console.log($('.toggle:checked').length);
+        // console.log($('.toggle').length);
+        // console.log($('.toggle:checked').length);
         if ($('.toggle:checked').length == $('.toggle').length) {
           $('.toggle-all').prop('checked', true)
         } else {
           $('.toggle-all').prop('checked', false)
         }
       })
+
+      // 7.未完成任务数量,在各种点击事件时，都要更新
 
     })
   </script>
