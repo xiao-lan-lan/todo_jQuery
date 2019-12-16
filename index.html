@@ -176,6 +176,16 @@
         }
       })
 
+      // 9.双击修改,li加类名editing,即变为编辑状态,把Label的值给文本框的val即可
+      $('.todo-list').on('dblclick', 'li', function(e) {
+        console.log($(this));
+        $(this).addClass('editing').siblings('li').removeClass('editing')
+        console.log();
+
+        console.log();
+        $(this).find('.edit').val($(this).find('label').text())
+      })
+
     })
   </script>
 </body>
