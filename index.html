@@ -112,6 +112,9 @@
         console.log($('.todo-count').find('strong').text());
         var todoNum = $('.toggle').length - $('.toggle:checked').length
         $('.todo-count').find('strong').text(todoNum)
+
+        // 10.更新如果有已完成的任务,显示全部清除按钮;没有则不显示
+        $('.completed').length ? $('.clear-completed').show() : $('.clear-completed').hide()
       })
 
       // 3.点击删除按钮,移除当前父元素li
@@ -120,6 +123,9 @@
 
         // 7.更新未完成数量
         $('.todo-count').find('strong').text($('.toggle').length - $('.toggle:checked').length)
+
+        // 10.更新如果有已完成的任务,显示全部清除按钮;没有则不显示
+        $('.completed') ? $('.clear-completed').show() : $('.clear-completed').hide()
       })
 
       // 4.删除所有已完成任务
@@ -140,6 +146,9 @@
 
         // 7.更新未完成数量
         $('.todo-count').find('strong').text($('.toggle').length - $('.toggle:checked').length)
+
+        // 10.更新如果有已完成的任务,显示全部清除按钮;没有则不显示
+        $('.completed').length ? $('.clear-completed').show() : $('.clear-completed').hide()
       })
 
       // 6.反选,子复选框点击事件,如果被选中的长度等于全部li长度,则全选被选中;否则全选不选中
@@ -171,6 +180,9 @@
         } else if ($(this).text() == 'Active') {
           $('.completed').siblings('li').show()
           $('.completed').hide()
+
+          // 10.更新如果有已完成的任务,显示全部清除按钮;没有则不显示
+          $('.completed').length ? $('.clear-completed').show() : $('.clear-completed').hide()
         } else {
           $('.todo-list').children().show()
         }
@@ -180,11 +192,11 @@
       $('.todo-list').on('dblclick', 'li', function(e) {
         console.log($(this));
         $(this).addClass('editing').siblings('li').removeClass('editing')
-        console.log();
-
-        console.log();
         $(this).find('.edit').val($(this).find('label').text())
       })
+
+      // 10.如果有已完成的任务,显示全部清除按钮;没有则不显示
+      $('.completed').length ? $('.clear-completed').show() : $('.clear-completed').hide()
 
     })
   </script>
