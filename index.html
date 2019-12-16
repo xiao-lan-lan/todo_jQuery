@@ -121,6 +121,18 @@
           $('.todo-list').find('.toggle').prop('checked', false).parents('li').removeClass('completed')
         }
       })
+
+      // 6.反选,子复选框点击事件,如果被选中的长度等于全部li长度,则全选被选中;否则全选不选中
+      $('.todo-list').on('click', '.toggle', function() {
+        console.log($('.toggle').length);
+        console.log($('.toggle:checked').length);
+        if ($('.toggle:checked').length == $('.toggle').length) {
+          $('.toggle-all').prop('checked', true)
+        } else {
+          $('.toggle-all').prop('checked', false)
+        }
+      })
+
     })
   </script>
 </body>
