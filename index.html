@@ -155,6 +155,27 @@
 
       // 7.未完成任务数量,在各种点击事件时，都要更新
 
+      // 8.筛选
+      $('.filters').on('click', 'a', function() {
+
+        // 点击的 a 添加类名,其他 a 移除类名
+        $(this).addClass('selected').parent().siblings('li').find('a').removeClass('selected')
+
+        // 通过点击的内容,判断要筛选的内容
+        console.log($(this).text());
+        if ($(this).text() == 'Completed') {
+          console.log($('.completed'));
+          console.log($('.completed').siblings('li'));
+          $('.completed').siblings('li').hide()
+          $('.completed').stop().show()
+        } else if ($(this).text() == 'Active') {
+          $('.completed').siblings('li').show()
+          $('.completed').hide()
+        } else {
+          $('.todo-list').children().show()
+        }
+      })
+
     })
   </script>
 </body>
